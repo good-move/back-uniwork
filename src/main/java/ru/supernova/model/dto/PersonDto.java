@@ -46,6 +46,9 @@ public class PersonDto {
     @ApiModelProperty(value = "Навыки пользователя")
     Set<TopicDto> skills;
 
+    @ApiModelProperty(value = "Курсы пользователя")
+    Set<CourseDto> courses;
+
     @NotNull
     @ApiModelProperty(value = "Тип пользователя")
     PersonType type;

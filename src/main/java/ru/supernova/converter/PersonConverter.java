@@ -21,6 +21,7 @@ import ru.supernova.model.enums.TopicType;
 public class PersonConverter {
 
     private final TopicConverter topicConverter;
+    private final CourseConverter courseConverter;
 
     @Nonnull
     public PersonDto toApi(Person source) {
@@ -34,6 +35,7 @@ public class PersonConverter {
             source.getEducation(),
             source.getOrganization(),
             source.getSkills().stream().map(topicConverter::toApi).collect(Collectors.toSet()),
+            source.getCourses().stream().map(courseConverter::toApi).collect(Collectors.toSet()),
             source.getType()
         );
     }
