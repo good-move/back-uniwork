@@ -54,7 +54,7 @@ public class PersonConverter {
             .setEducation(personDto.getEducation())
             .setOrganization(personDto.getOrganization())
             .setSkills(topicList.stream()
-                .filter(topic -> topicTypes.contains(topic.getType()))
+                .filter(topic -> topicTypes.contains(topic.getName()))
                 .collect(Collectors.toSet()))
             .setType(personDto.getType());
     }

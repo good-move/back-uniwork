@@ -30,5 +30,5 @@ public class Topic {
 
     @Column
     @Enumerated(EnumType.STRING)
-    private TopicType type;
+    private TopicType name;
 }

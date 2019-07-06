@@ -13,7 +13,7 @@ public class TopicConverter {
     public TopicDto toApi(Topic source) {
         return new TopicDto(
             source.getId(),
-            source.getType()
+            source.getName()
         );
     }
 }

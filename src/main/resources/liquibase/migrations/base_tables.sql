@@ -29,12 +29,12 @@ COMMENT ON COLUMN person.type is 'Тип';
 CREATE TABLE topic
 (
   id BIGSERIAL PRIMARY KEY,
-  type TEXT
+  name TEXT UNIQUE NOT NULL
 );
 
 COMMENT ON TABLE topic is 'Топик';
 COMMENT ON COLUMN topic.id is 'Идентификатор';
-COMMENT ON COLUMN topic.type is 'Тип';
+COMMENT ON COLUMN topic.name is 'Название';
 
 --changeset miliaev:UNIWORK-02-create-table-person-topic
 CREATE TABLE person_topic
@@ -45,4 +45,4 @@ CREATE TABLE person_topic
 
 COMMENT ON TABLE person_topic is 'Таблица-связка пользователей и топиков';
 COMMENT ON COLUMN person_topic.person_id is 'Идентификатор пользователя';
-COMMENT ON COLUMN person_topic.topic_id is 'ТиИдентификатор топика';
+COMMENT ON COLUMN person_topic.topic_id is 'Идентификатор топика';
