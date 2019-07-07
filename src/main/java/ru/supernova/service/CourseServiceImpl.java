@@ -75,7 +75,7 @@ public class CourseServiceImpl implements CourseService {
 
     private String buildUrl(@Nonnull String... uriFragments) {
         return UriComponentsBuilder
-            .fromHttpUrl("http://localhost:9090")
+            .fromHttpUrl("http://localhost:9100")
             .pathSegment(uriFragments)
             .toUriString();
     }
