@@ -21,8 +21,10 @@ import org.springframework.web.client.HttpStatusCodeException;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.multipart.MultipartException;
 import ru.supernova.exception.error.ApiError;
+import ru.supernova.exception.error.DuplicateError;
 import ru.supernova.exception.error.NotFoundError;
 import ru.supernova.exception.error.SimpleApiError;
+import ru.supernova.exception.http.ResourceDuplicateException;
 import ru.supernova.exception.http.ResourceNotFoundException;
 
 @Slf4j
@@ -31,6 +33,7 @@ public class ControllerExceptionHandler {
 
     private static final String BAD_REQUEST_LOG_MSG = "BAD_REQUEST occurred during request processing";
     private static final String NOT_FOUND_LOG_MSG = "NOT_FOUND occurred during request processing";
+    private static final String CONFLICT_LOG_MSG = "CONFLICT occurred during request processing";
     private static final String INTERNAL_SERVER_ERROR_LOG_MSG =
         "INTERNAL_SERVER_ERROR occurred during request processing";
 
@@ -56,6 +59,14 @@ public class ControllerExceptionHandler {
     public ApiError handleNoResourceFoundException(ResourceNotFoundException e) {
         log.warn(NOT_FOUND_LOG_MSG, e);
         return new NotFoundError(e.getType(), e.getIdentifiers(), e.getMessage());
+    }
+
+    @ResponseBody
+    @ResponseStatus(HttpStatus.CONFLICT)
+    @ExceptionHandler(value = ResourceDuplicateException.class)
+    public ApiError handleResourceFoundDuplicateException(ResourceDuplicateException e) {
+        log.warn(NOT_FOUND_LOG_MSG, e);
+        return new DuplicateError(e.getType(), e.getUrls(), e.getMessage());
     }
 
     @ResponseBody
