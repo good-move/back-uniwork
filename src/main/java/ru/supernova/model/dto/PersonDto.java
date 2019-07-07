@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Value;
+import ru.supernova.model.enums.EducationType;
 import ru.supernova.model.enums.PersonType;
 
 @Value
@@ -38,7 +39,7 @@ public class PersonDto {
     LocalDate birthDate;
 
     @ApiModelProperty(value = "Образование пользователя")
-    String education;
+    EducationType education;
 
     @ApiModelProperty(value = "Организация пользователя")
     String organization;

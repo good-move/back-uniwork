@@ -23,6 +23,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import lombok.experimental.Accessors;
+import ru.supernova.model.enums.EducationType;
 import ru.supernova.model.enums.PersonType;
 
 @NoArgsConstructor
@@ -53,7 +54,8 @@ public class Person {
     private LocalDate birthDate;
 
     @Column
-    private String education;
+    @Enumerated(EnumType.STRING)
+    private EducationType education;
 
     @Column
     private String organization;
