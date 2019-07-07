@@ -60,7 +60,7 @@ public class SearchVideoService {
         paramMap.keySet().forEach(key -> paramMultiMap.put(key, new ArrayList<>(paramMap.get(key))));
 
         return UriComponentsBuilder
-            .fromHttpUrl("http://localhost:9100")
+            .fromHttpUrl("http://localhost:9090")
             .queryParams(paramMultiMap)
             .pathSegment(uriFragments)
             .toUriString();
